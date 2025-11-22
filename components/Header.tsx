@@ -23,7 +23,7 @@ export default function Header() {
         setIsMobileMenuOpen(false);
       }
     };
-    
+
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isMobileMenuOpen]);
@@ -49,44 +49,47 @@ export default function Header() {
   ];
 
   const socialLinks = [
-    { 
-      icon: Instagram, 
-      href: 'https://instagram.com/patavinaehirundines', 
+    {
+      icon: Instagram,
+      href: 'https://instagram.com/patavinaehirundines',
       label: 'Instagram'
     },
-    { 
-      icon: Facebook, 
-      href: 'https://facebook.com/patavinaehirundines', 
+    {
+      icon: Facebook,
+      href: 'https://facebook.com/patavinaehirundines',
       label: 'Facebook'
     },
-    { 
-      icon: Phone, 
-      href: 'tel:+393401234567', 
+    {
+      icon: Phone,
+      href: 'tel:+393401234567',
       label: 'Telefono'
     },
   ];
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-[#001f54]/98 backdrop-blur-lg shadow-2xl border-b-2 border-white/10' 
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+            ? 'bg-[#001f54]/98 backdrop-blur-lg shadow-2xl border-b-2 border-white/10'
             : 'bg-gradient-to-b from-[#001f54]/80 to-transparent backdrop-blur-sm'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            
+
             {/* Logo */}
             <Link
-              href="/" 
+              href="/"
               className="group flex items-center gap-3 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg px-2 py-1"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-white blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                <div className="relative w-14 h-14 bg-gradient-to-br from-white via-blue-100 to-blue-200 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 group-hover:border-white group-hover:shadow-white/50 group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12">
-                  <span className="text-3xl">🦅</span>
+                <div className="relative w-14 h-14 bg-gradient-to-br from-white via-blue-100 to-blue-200 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 group-hover:border-white group-hover:shadow-white/50 group-hover:shadow-xl transition-all duration-300 group-hover:rotate-12 overflow-hidden">
+                  <img
+                    src="/images/logo.png"
+                    alt="Logo Patavinae Hirundines"
+                    className="w-11 h-11 object-contain"
+                  />
                 </div>
               </div>
               <div className="hidden md:block">
@@ -126,9 +129,9 @@ export default function Header() {
                   className="group relative w-11 h-11 flex items-center justify-center rounded-full bg-white/10 transition-all duration-300 border-2 border-white/20 hover:border-white hover:scale-110 hover:shadow-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-white/50"
                   aria-label={social.label}
                 >
-                  <social.icon 
-                    size={20} 
-                    className="text-white group-hover:text-[#003d82] group-hover:scale-110 transition-all" 
+                  <social.icon
+                    size={20}
+                    className="text-white group-hover:text-[#003d82] group-hover:scale-110 transition-all"
                     strokeWidth={2.5}
                   />
                 </Link>
@@ -142,19 +145,17 @@ export default function Header() {
               aria-label={isMobileMenuOpen ? 'Chiudi menu' : 'Apri menu'}
             >
               <div className="relative w-6 h-6">
-                <X 
-                  className={`absolute inset-0 text-white transition-all duration-300 ${
-                    isMobileMenuOpen ? 'rotate-0 opacity-100' : 'rotate-90 opacity-0'
-                  }`} 
-                  size={24} 
-                  strokeWidth={2.5} 
+                <X
+                  className={`absolute inset-0 text-white transition-all duration-300 ${isMobileMenuOpen ? 'rotate-0 opacity-100' : 'rotate-90 opacity-0'
+                    }`}
+                  size={24}
+                  strokeWidth={2.5}
                 />
-                <Menu 
-                  className={`absolute inset-0 text-white transition-all duration-300 ${
-                    isMobileMenuOpen ? '-rotate-90 opacity-0' : 'rotate-0 opacity-100'
-                  }`} 
-                  size={24} 
-                  strokeWidth={2.5} 
+                <Menu
+                  className={`absolute inset-0 text-white transition-all duration-300 ${isMobileMenuOpen ? '-rotate-90 opacity-0' : 'rotate-0 opacity-100'
+                    }`}
+                  size={24}
+                  strokeWidth={2.5}
                 />
               </div>
             </button>
@@ -162,10 +163,9 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div 
-          className={`lg:hidden transition-all duration-500 overflow-hidden ${
-            isMobileMenuOpen ? 'max-h-screen border-t-2 border-white/10' : 'max-h-0'
-          }`}
+        <div
+          className={`lg:hidden transition-all duration-500 overflow-hidden ${isMobileMenuOpen ? 'max-h-screen border-t-2 border-white/10' : 'max-h-0'
+            }`}
         >
           <div className="bg-[#001f54]/98 backdrop-blur-lg px-4 py-6 space-y-2">
             {menuItems.map((item, index) => (
@@ -179,7 +179,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            
+
             {/* Social Mobile */}
             <div className="pt-4 mt-2 border-t-2 border-white/10">
               <p className="text-blue-200 text-sm font-bold uppercase tracking-wider mb-3 px-2">

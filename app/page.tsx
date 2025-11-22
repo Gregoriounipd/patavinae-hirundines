@@ -11,7 +11,7 @@ export default function Homepage() {
 
   useEffect(() => {
     setIsVisible(true);
-    
+
     const handleScroll = () => setScrollY(window.scrollY);
     const handleMouseMove = (e: MouseEvent) => {
       // Throttle mouse movement for better performance
@@ -22,7 +22,7 @@ export default function Homepage() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('mousemove', handleMouseMove);
@@ -56,25 +56,25 @@ export default function Homepage() {
               <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1"/>
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="1" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
               </svg>
             </div>
-            
+
             {/* Effetto parallax sfere - ottimizzato con will-change */}
-            <div 
+            <div
               className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl will-change-transform"
-              style={{ 
-                transform: `translate3d(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px, 0)` 
+              style={{
+                transform: `translate3d(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px, 0)`
               }}
               aria-hidden="true"
             />
-            <div 
+            <div
               className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full opacity-5 blur-3xl will-change-transform"
-              style={{ 
-                transform: `translate3d(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px, 0)` 
+              style={{
+                transform: `translate3d(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px, 0)`
               }}
               aria-hidden="true"
             />
@@ -83,16 +83,18 @@ export default function Homepage() {
           {/* Contenuto Hero */}
           <div className="relative min-h-screen flex items-center justify-center px-4 py-20">
             <div className={`text-center z-10 max-w-7xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge animato con accessibilità */}
+              {/* Badge animato con logo PNG */}
               <div className="mb-8 inline-block">
                 <div className="relative">
                   <div className="absolute inset-0 bg-white blur-2xl opacity-30 animate-pulse" aria-hidden="true"></div>
-                  <div 
-                    className="relative w-40 h-40 bg-gradient-to-br from-white to-blue-100 rounded-full flex items-center justify-center shadow-2xl border-8 border-[#003d82] transform hover:scale-110 hover:rotate-12 transition-all duration-500"
-                    role="img"
-                    aria-label="Logo squadra - aquila"
+                  <div
+                    className="relative w-40 h-40 bg-gradient-to-br from-white to-blue-100 rounded-full flex items-center justify-center shadow-2xl border-8 border-[#003d82] transform hover:scale-110 hover:rotate-12 transition-all duration-500 overflow-hidden"
                   >
-                    <span className="text-8xl" role="presentation">🦅</span>
+                    <img
+                      src="/images/logo.png"
+                      alt="Logo Patavinae Hirundines"
+                      className="w-32 h-32 object-contain"
+                    />
                   </div>
                 </div>
               </div>
@@ -120,7 +122,7 @@ export default function Homepage() {
 
               {/* CTA con accessibilità migliorata */}
               <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20">
-                <button 
+                <button
                   onClick={() => scrollToSection('calendario')}
                   className="group relative bg-white text-[#003d82] px-12 py-6 rounded-xl font-black text-xl hover:scale-105 transform transition-all duration-300 shadow-2xl overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/50"
                   aria-label="Vai alla sezione prossima partita"
@@ -131,7 +133,7 @@ export default function Homepage() {
                     <ChevronRight className="group-hover:translate-x-2 transition-transform" size={24} aria-hidden="true" />
                   </span>
                 </button>
-                <button 
+                <button
                   onClick={() => scrollToSection('contatti')}
                   className="bg-transparent text-white px-12 py-6 rounded-xl font-black text-xl hover:bg-white/10 transform transition-all duration-300 border-4 border-white focus:outline-none focus:ring-4 focus:ring-white/50"
                   aria-label="Vai alla sezione contatti"
@@ -143,10 +145,10 @@ export default function Homepage() {
               {/* Stats Row con animazioni migliorate */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pb-8">
                 {stats.map((stat, index) => (
-                  <div 
+                  <div
                     key={stat.label}
                     className="group relative bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-8 transform hover:scale-110 hover:-translate-y-2 transition-all duration-300 border-2 border-white/20 hover:border-white hover:bg-white/10 cursor-pointer z-20"
-                    style={{ 
+                    style={{
                       animationDelay: `${index * 0.1}s`,
                       animation: isVisible ? 'slideUp 0.6s ease-out forwards' : 'none'
                     }}
@@ -160,8 +162,8 @@ export default function Homepage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </div >
+          </div >
 
           {/* Scroll indicator accessibile */}
           <button
@@ -179,7 +181,7 @@ export default function Homepage() {
         </section>
 
         {/* Sezione Calendario e Risultati - Ottimizzata */}
-        <section id="calendario" className="py-24 px-4 bg-gradient-to-b from-[#0a1128] to-[#001f54]">
+        < section id="calendario" className="py-24 px-4 bg-gradient-to-b from-[#0a1128] to-[#001f54]" >
           <div className="max-w-7xl mx-auto">
             {/* Titolo Sezione */}
             <div className="text-center mb-16">
@@ -198,7 +200,7 @@ export default function Homepage() {
                 </div>
                 <div className="relative bg-[#001f54] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-105">
                   <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-600 via-white to-blue-600" aria-hidden="true"></div>
-                  <iframe 
+                  <iframe
                     src="https://www.tuttocampo.it/Veneto/CalcioA5Dilettanti/GironeC/Squadra/PatavinaeHirundines/1146699/Calendario"
                     className="w-full h-[600px]"
                     title="Calendario completo Patavinae Hirundines - Girone C"
@@ -215,7 +217,7 @@ export default function Homepage() {
                 </div>
                 <div className="relative bg-[#001f54] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-105">
                   <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-600 via-white to-blue-600" aria-hidden="true"></div>
-                  <iframe 
+                  <iframe
                     src="https://www.tuttocampo.it/Veneto/PD/CalcioA5Dilettanti/GironeC/Risultati"
                     className="w-full h-[600px]"
                     title="Risultati completi Girone C"
@@ -225,10 +227,10 @@ export default function Homepage() {
               </article>
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Classifica - Ottimizzata */}
-        <section id="classifica" className="py-24 px-4 bg-[#001f54] relative overflow-hidden">
+        < section id="classifica" className="py-24 px-4 bg-[#001f54] relative overflow-hidden" >
           <div className="absolute inset-0 opacity-5" aria-hidden="true">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0id2hpdGUiLz48L3N2Zz4=')]"></div>
           </div>
@@ -249,7 +251,7 @@ export default function Homepage() {
 
             <div className="relative bg-[#0a1128] rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 hover:border-white/40 transition-all duration-300">
               <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-blue-600 via-white to-blue-600" aria-hidden="true"></div>
-              <iframe 
+              <iframe
                 src="https://www.tuttocampo.it/Veneto/PD/CalcioA5Dilettanti/GironeC/Classifica"
                 className="w-full h-[700px]"
                 title="Classifica completa Girone C Veneto"
@@ -257,10 +259,10 @@ export default function Homepage() {
               />
             </div>
           </div>
-        </section>
+        </section >
 
         {/* CTA Finale Migliorata con Form di Contatto */}
-        <section id="contatti" className="py-32 px-4 bg-gradient-to-br from-[#003d82] via-[#0051a5] to-[#003d82] relative overflow-hidden">
+        < section id="contatti" className="py-32 px-4 bg-gradient-to-br from-[#003d82] via-[#0051a5] to-[#003d82] relative overflow-hidden" >
           <div className="absolute inset-0" aria-hidden="true">
             <div className="absolute top-20 left-20 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl animate-pulse"></div>
             <div className="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
@@ -284,24 +286,24 @@ export default function Homepage() {
 
             {/* Info Contatti */}
             <div className="grid md:grid-cols-3 gap-6 mb-12">
-              <a 
-                href="mailto:info@patavinae-hirundines.it" 
+              <a
+                href="mailto:info@patavinae-hirundines.it"
                 className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border-2 border-white/20 hover:border-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <Mail className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-lg">Email</p>
                 <p className="text-blue-200 text-sm mt-2">info@patavinae-hirundines.it</p>
               </a>
-              
-              <a 
-                href="tel:+393331234567" 
+
+              <a
+                href="tel:+393331234567"
                 className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border-2 border-white/20 hover:border-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
               >
                 <Phone className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-lg">Telefono</p>
                 <p className="text-blue-200 text-sm mt-2">+39 333 123 4567</p>
               </a>
-              
+
               <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border-2 border-white/20 hover:border-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
                 <MapPin className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-lg">Sede</p>
@@ -310,7 +312,7 @@ export default function Homepage() {
             </div>
 
             <div className="text-center">
-              <a 
+              <a
                 href="mailto:info@patavinae-hirundines.it"
                 className="group relative inline-block bg-white text-[#003d82] px-16 py-8 rounded-2xl font-black text-2xl hover:scale-110 transform transition-all duration-300 shadow-2xl overflow-hidden focus:outline-none focus:ring-4 focus:ring-white/50"
               >
@@ -322,25 +324,36 @@ export default function Homepage() {
               </a>
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Footer aggiunto */}
-        <footer className="bg-[#0a1128] py-12 px-4 border-t-2 border-white/10">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="text-6xl mb-4">🦅</div>
-            <h3 className="text-3xl font-black text-white mb-2">PATAVINAE HIRUNDINES</h3>
-            <p className="text-blue-200 mb-6">Calcio a 5 • Girone C • Veneto</p>
-            <div className="flex justify-center gap-6 text-blue-300 text-sm">
-              <span>© 2024 Patavinae Hirundines</span>
-              <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <span>•</span>
-              <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+        < footer className="bg-[#0a1128] py-12 px-4 border-t-2 border-white/10" >
+          <div className="mb-8 inline-block">
+            <div className="relative">
+              <div className="absolute inset-0 bg-white blur-2xl opacity-30 animate-pulse" aria-hidden="true"></div>
+              <div
+                className="relative w-40 h-40 bg-gradient-to-br from-white to-blue-100 rounded-full flex items-center justify-center shadow-2xl border-8 border-[#003d82] transform hover:scale-110 hover:rotate-12 transition-all duration-500 overflow-hidden"
+              >
+                <img
+                  src="/images/logo.png"
+                  alt="Logo Patavinae Hirundines"
+                  className="w-32 h-32 object-contain"
+                />
+              </div>
             </div>
           </div>
-        </footer>
+          <h3 className="text-3xl font-black text-white mb-2">PATAVINAE HIRUNDINES</h3>
+          <p className="text-blue-200 mb-6">Calcio a 5 • Girone C • Veneto</p>
+          <div className="flex justify-center gap-6 text-blue-300 text-sm">
+            <span>© 2024 Patavinae Hirundines</span>
+            <span>•</span>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <span>•</span>
+            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+          </div>
+    </footer >
 
-        <style jsx>{`
+      <style jsx>{`
           @keyframes slideUp {
             from {
               opacity: 0;
@@ -352,7 +365,7 @@ export default function Homepage() {
             }
           }
         `}</style>
-      </div>
+      </div >
     </>
   );
 }
