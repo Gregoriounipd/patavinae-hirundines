@@ -51,17 +51,17 @@ export default function Header() {
   const socialLinks = [
     {
       icon: Instagram,
-      href: 'https://instagram.com/patavinaehirundines',
+      href: 'https://instagram.com/asd_patavinaehirundines',
       label: 'Instagram'
     },
     {
       icon: Facebook,
-      href: 'https://facebook.com/patavinaehirundines',
+      href: 'https://www.facebook.com/share/1AL7PuKQZ1/?mibextid=wwXIfr',
       label: 'Facebook'
     },
     {
       icon: Phone,
-      href: 'tel:+393401234567',
+      href: 'tel:+39 389 257 4273',
       label: 'Telefono'
     },
   ];

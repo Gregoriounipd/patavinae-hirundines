@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Calendar, Trophy, Users, ChevronRight, Zap, Target, Mail, Phone, MapPin } from 'lucide-react';
+import Header from '../components/Header';
 
 export default function Homepage() {
   const [scrollY, setScrollY] = useState(0);
@@ -28,11 +29,11 @@ export default function Homepage() {
   }, []);
 
   const stats = [
-    { label: "Posizione", value: "3°", icon: Trophy, color: "from-yellow-400 to-orange-500" },
-    { label: "Goal", value: "45", icon: Target, color: "from-blue-400 to-blue-600" },
-    { label: "Vittorie", value: "12", icon: Zap, color: "from-green-400 to-emerald-600" },
-    { label: "Roster", value: "18", icon: Users, color: "from-purple-400 to-pink-600" }
-  ];
+  { label: "Goal Stagione", value: "27", icon: Target, color: "from-blue-400 to-blue-600" },
+  { label: "Anni di Storia", value: "4+", icon: Trophy, color: "from-yellow-400 to-orange-500" },
+  { label: "Vittorie", value: "2", icon: Zap, color: "from-green-400 to-emerald-600" },
+  { label: "Rosa", value: "20", icon: Users, color: "from-purple-400 to-pink-600" }
+];
 
   const scrollToSection = useCallback((sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -43,11 +44,30 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-[#0a1128]">
-      {/* Hero Section */}
+      <Header />
+      {/* Hero Section con Carousel */}
       <section className="relative min-h-screen overflow-hidden" id="hero">
-        {/* Background animato */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#001f54] via-[#003d82] to-[#0051a5]">
-          <div className="absolute inset-0 opacity-10" aria-hidden="true">
+        {/* Carousel Background */}
+        <div className="absolute inset-0">
+          {/* Immagini - sostituisci con le tue foto in /public/images/ */}
+          {['/images/hero1.jpg', '/images/hero2.jpg', '/images/hero3.jpg', '/images/hero4.jpg'].map((img, index) => (
+            <div
+              key={index}
+              className="absolute inset-0 transition-opacity duration-1000"
+              style={{
+                opacity: Math.floor(Date.now() / 5000) % 3 === index ? 1 : 0,
+                backgroundImage: `url(${img})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              {/* Overlay scuro per leggibilità */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#001f54]/80 via-[#003d82]/70 to-[#0051a5]/90"></div>
+            </div>
+          ))}
+          
+          {/* Pattern overlay */}
+          <div className="absolute inset-0 opacity-20" aria-hidden="true">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -57,22 +77,6 @@ export default function Homepage() {
               <rect width="100%" height="100%" fill="url(#grid)" />
             </svg>
           </div>
-
-          {/* Effetto parallax */}
-          <div
-            className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full opacity-5 blur-3xl will-change-transform"
-            style={{
-              transform: `translate3d(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px, 0)`
-            }}
-            aria-hidden="true"
-          />
-          <div
-            className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full opacity-5 blur-3xl will-change-transform"
-            style={{
-              transform: `translate3d(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px, 0)`
-            }}
-            aria-hidden="true"
-          />
         </div>
 
         {/* Contenuto Hero */}
@@ -161,7 +165,7 @@ export default function Homepage() {
           aria-label="Scorri alla sezione successiva"
         >
           <div className="flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-white/60 text-sm font-semibold uppercase tracking-wider">Scroll</span>
+            <span className="text-white/60 text-sm font-semibold uppercase tracking-wider">Scrolla</span>
             <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-2">
               <div className="w-1 h-3 bg-white rounded-full animate-pulse"></div>
             </div>
@@ -286,19 +290,19 @@ export default function Homepage() {
               </span>
             </h2>
             <p className="text-2xl md:text-3xl text-blue-100 mb-12 font-semibold max-w-3xl mx-auto leading-relaxed">
-              Cerchiamo giocatori con fame di vittoria. Hai quello che serve?
+              Cerchiamo Collaboratori con fame. Hai quello che serve?
             </p>
           </div>
 
           {/* Info Contatti */}
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             <a
-              href="mailto:info@patavinae-hirundines.it"
+              href="mailto:asdpatavinaehirundines@gmail.com"
               className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border-2 border-white/20 hover:border-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105"
             >
               <Mail className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <p className="text-white font-bold text-lg">Email</p>
-              <p className="text-blue-200 text-sm mt-2">segreteria@patavinae-hirundines.it</p>
+              <p className="text-blue-200 text-sm mt-2">asdpatavinaehirundines@gmail.com</p>
             </a>
 
             <a
@@ -307,13 +311,13 @@ export default function Homepage() {
             >
               <Phone className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <p className="text-white font-bold text-lg">Telefono</p>
-              <p className="text-blue-200 text-sm mt-2">+39 3892574273</p>
+              <p className="text-blue-200 text-sm mt-2">+39 389 257 4273</p>
             </a>
 
             <div className="group bg-white/10 backdrop-blur-md rounded-2xl p-6 border-2 border-white/20 hover:border-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
               <MapPin className="w-12 h-12 text-white mx-auto mb-4 group-hover:scale-110 transition-transform" />
               <p className="text-white font-bold text-lg">Sede</p>
-              <p className="text-blue-200 text-sm mt-2">Padova, Veneto</p>
+              <p className="text-blue-200 text-sm mt-2">Cadoneghe PD, Veneto</p>
             </div>
           </div>
 
@@ -334,24 +338,44 @@ export default function Homepage() {
 
       {/* Footer */}
       <footer className="bg-[#0a1128] py-12 px-4 border-t-2 border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="mb-6 inline-block">
-            <div className="w-20 h-20 bg-gradient-to-br from-white to-blue-100 rounded-full flex items-center justify-center shadow-lg border-4 border-[#003d82] overflow-hidden">
-              <img
-                src="/images/logo.png"
-                alt="Logo Patavinae Hirundines"
-                className="w-16 h-16 object-contain"
-              />
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="mb-6 inline-block">
+              <div className="w-20 h-20 bg-gradient-to-br from-white to-blue-100 rounded-full flex items-center justify-center shadow-lg border-4 border-[#003d82] overflow-hidden">
+                <img
+                  src="/images/logo.png"
+                  alt="Logo Patavinae Hirundines"
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
             </div>
+            <h3 className="text-3xl font-black text-white mb-2">PATAVINAE HIRUNDINES</h3>
+            <p className="text-blue-200 mb-6">Calcio a 5 • Girone C • Veneto</p>
           </div>
-          <h3 className="text-3xl font-black text-white mb-2">PATAVINAE HIRUNDINES</h3>
-          <p className="text-blue-200 mb-6">Calcio a 5 • Girone C • Veneto</p>
-          <div className="flex flex-wrap justify-center gap-4 text-blue-300 text-sm">
+
+          {/* Links */}
+          <div className="flex flex-wrap justify-center gap-4 text-blue-300 text-sm mb-6">
             <span>© 2024 Patavinae Hirundines</span>
             <span>•</span>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>•</span>
             <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+          </div>
+
+          {/* Credits */}
+          <div className="text-center pt-6 border-t border-white/10">
+            <p className="text-blue-300 text-sm">
+              Creato da{' '}
+              <a 
+                href="https://greg4web.it" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-white font-bold hover:text-blue-200 transition-colors underline decoration-2 underline-offset-4"
+              >
+                greg4web.it
+              </a>
+              {' '}• Web Developer
+            </p>
           </div>
         </div>
       </footer>
