@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Instagram, Facebook, Mail, Phone, Camera, Home, Users, Calendar, Trophy } from 'lucide-react';
 import Link from 'next/link';
 
